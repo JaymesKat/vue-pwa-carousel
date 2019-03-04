@@ -1,27 +1,34 @@
 <template>
   <div id="app">
     <header>
-      <span>Vue.js PWA</span>
+      <img
+        src="./assets/logo.png"
+        alt="Vue.js PWA"
+      >
+      <span>Progressive Vue App</span>
     </header>
     <main>
       <h1 v-html="headline" />
-      <Card
-        class="current-element"
-        :headline="cards[0].headline"
-        :text="cards[0].text"
-        :imgName="cards[0].imgName"
-      />
+      <div class="section">
+        <h2>{{this.sections[0].headline}}</h2>
+        <Carousel :cards="cards" />
+      </div>
     </main>
+    <div class="section">
+      <h2>{{this.sections[1].headline}}</h2>
+      <p>{{this.sections[1].text}}</p>
+    </div>
+    <Imprint />
   </div>
 </template>
 
 <script>
 import Imprint from "./components/Imprint";
-import Card from "./components/Card";
+import Carousel from "./components/Carousel";
 export default {
   name: 'app',
   components: {
-    Imprint, Card
+    Imprint, Carousel
   },
   data() {
     return {
